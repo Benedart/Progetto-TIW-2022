@@ -1,0 +1,48 @@
+main > .container {
+    padding: 60px 15px 0;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+table {
+    width: auto;
+}
+
+nav {
+    background-color: #0091ff;
+}
+
+button{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.right-align{
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.footer {
+    background-color: #f5f5f5;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.b-logout {
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+code {
+    font-size: 80%;
+}
+
+.btn-round {
+    border-radius: 30px;
+}

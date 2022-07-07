@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Conferma trasferimento</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="icon" href="resources/images/polimi_icon.png">
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-dark fixed-top">
+        <img src="resources/images/polimi_logo_horizontal_white.png" alt="" height="60" width="auto">
+        <a th:href="@{/GetDettaglioConto(IDConto=${contoSrc.IDConto})}"><button class="btn btn-lg btn-light" type="submit">Stato conto</button></a>
+        <div class="d-flex flex-row my-1">
+            <p th:text="${session.utente.nome + ' ' + session.utente.cognome}" class="h4 navbar-brand font-weight-normal my-1">NOME COGNOME</p>
+            <a th:href="@{/Logout}"><button class="btn btn-outline-light my-1" type="submit">Logout</button></a>
+        </div>
+    </nav>
+</header>
+
+<br><br>
+
+<main role="main" class="flex-shrink-0 my-4">
+    <div class="container">
+        <h1 class="h1 mb-3 font-weight-normal">CONFERMA TRASFERIMENTO</h1>
+        <br>
+        <h4 class="alert alert-success" th:class="'alert alert-success'">
+            Transazione eseguita con successo. Importo trasferito: &euro; [[${importo}]]
+        </h4>
+
+        <table class="table table-striped my-5">
+            <thead>
+            <tr>
+                <th></th>
+                <th>IDConto</th>
+                <th>Utente</th>
+                <th>Importo PRE</th>
+                <th>Importo POST</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><b>Conto Addebito</b></td>
+                <td th:text="${contoSrc.IDConto}">0000</td>
+                <td th:text="${session.utente.email}">esempio@prova.com</td>
+                <td>&euro; [[${#numbers.formatDecimal(contoSrc.saldo + importo, 0, 2)}]]</td>
+                <td>&euro; [[${#numbers.formatDecimal(contoSrc.saldo, 0, 2)}]]</td>
+            </tr>
+            <tr>
+                <td><b>Conto Accredito</b></td>
+                <td th:text="${contoDst.IDConto}">0000</td>
+                <td th:text="${utenteDst.email}">esempio@prova.com</td>
+                <td>&euro; [[${#numbers.formatDecimal(contoDst.saldo - importo, 0, 2)}]]</td>
+                <td>&euro; [[${#numbers.formatDecimal(contoDst.saldo, 0, 2)}]]</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+</body>
+</html>
