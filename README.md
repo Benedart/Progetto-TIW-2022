@@ -2,6 +2,8 @@
 
 This is my submission for the "Progetto di TIW 2021/22" at Politecnico di Milano.
 
+**Teacher:** Piero Fraternali
+
 Grade: 30L
 
 ## Description
